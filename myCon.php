@@ -1,0 +1,13 @@
+<?php
+
+$password="Akuoma.96";
+$user = "root";
+$webserver="localhost";
+$db = "myAlertsApp";   
+
+$conn = new mysqli($webserver, $user, $password, $db);  
+
+if($conn->connect_error){
+    echo "Connection failed: ".$conn->connect_error;
+}
+?>
