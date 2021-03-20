@@ -1,3 +1,7 @@
+<?php
+   require("./user_class.php");
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -88,12 +92,14 @@
             <!--Login form-->
             <div id="login" style="display: ;">
                 
-            <form class="user-form" >
-                <input type="text" name="username" placeholder="username"/>
+            <form class="user-form" method='post'>
+                
+                <input type="text" name="email" placeholder="email"/>
                 <input type="password" name="password" placeholder="password"/>
-                <button>Login</button>
+                <button type="submit" name="lsubmit">Login</button>
 
                 <p class="message">Not registered? <a class="toggle" style="color: forestgreen; ">Create an account</a></p>
+                
             </form>
                 
             </div>
@@ -102,18 +108,44 @@
             <!--Register form-->
             <div id="register" style="display: none;">
                 
-            <form class="user-form" >
-                <input type="text" placeholder="First Name"/>
-                <input type="text" placeholder="Last Name"/>
-                <input type="text" placeholder="Email Address"/>
-                <input type="password" placeholder="Phone Number"/>
-                <input type="text" placeholder="Password"/>
-                <button>Register</button>
+            <form class="user-form" method='post'>
+                
+                <input type="text" name="fname" placeholder="First Name"/>
+                <input type="text" name="lname" placeholder="Last Name"/>
+                <input type="text" name="email" placeholder="Email Address"/>
+                <input type="number" name="phonenumber" placeholder="Phone Number"/>
+                <input type="text" name="password" placeholder="Password"/>
+                <button type="submit" name="rsubmit">Register</button>
                 
                 <p class="message">Already registered? <a class="toggle2" style="color: forestgreen; ">Sign In</a></p>
+                
             </form>
                 
-            </div>    
+            </div>  
+            
+            <?php
+            
+            if(isset($_POST['rsubmit'])) {
+                
+                $firstname = $conn->real_escape_string($_POST['fname']);
+                $lastname = $conn->real_escape_string($_POST['lname']);
+                $email = $conn->real_escape_string($_POST['email']);
+                $phonenumber = $conn->real_escape_string($_POST['phonenumber']);
+            
+            
+            
+                $user = new User();
+                
+                $user->registerUser($firstname, $lastname, $email, $phonenumber);
+            
+            
+            
+            
+            }
+            
+            
+            
+            ?>
             
             
             
