@@ -2,7 +2,7 @@
 
 $password="Akuoma.96";
 $user = "root";
-$webserver="localhost";
+$webserver="172.17.0.2:3306";
 $db = "myAlertsApp";   
 
 $conn = new mysqli($webserver, $user, $password, $db);  
