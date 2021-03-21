@@ -61,6 +61,7 @@ class User {
 /* Register User */    
   public function registerUser($firstname, $lastname, $email, $phonenumber){
       
+      
       $query = "INSERT INTO `Registered_User` (`UserId`, `FirstName`, `LastName`, `RegistartionDate`, `EmailAddress`, `PhoneNumber`) VALUES (NULL, '$firstname', '$lastname', CURRENT_TIMESTAMP, '$email', '$phonenumber')";
       
       //insert form data into MySQL database
@@ -77,6 +78,7 @@ class User {
             
             echo "<script>alert('Registration Not Successful')</script>";  
         } 
+      
          
   }     
     
