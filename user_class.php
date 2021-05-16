@@ -1,24 +1,35 @@
 <?php
 
-require("myCon.php");
+  require("./myCon.php");
 
 
 class User {
+    
   // Properties
     
-  //User's chosen name    
-  protected $userName;
+  //User's first name    
+  protected $firstName;
+    
+  //User's last name    
+  protected $lastName;
     
   //User's possible password    
   protected $password;
     
-  //User's ID will be stored in this variable using a Session variable    
-  public $userId = 0;    
+  //User's email    
+  protected $userEmail;
+    
+  //User's contact number    
+  protected $userNumber;
+       
     
   //constructor
-  function __construct($userName, $password) {
-    $this->userName = $userName;
-    $this->password = $password;
+  function __construct($firstName, $lastName, $userEmail, $password, $userNumber) {
+    $this->firstName = $firstName;
+    $this->lastName = $lastName;
+    $this->userEmail = $userEmail;
+    $this->userPassword = $userPassword;
+    $this->userNumber = $userNumber;
   }    
      
   //deconstructor    
@@ -26,89 +37,88 @@ class User {
     
   }    
     
-  // Set's userName
-  function set_userName($userName) {
-    $this->userName = $userName;
+  // Set's firstName
+  function set_firstName($firstName) {
+    $this->firstName = $firstName;
   }
     
-  // Get's userName    
-  function get_userName() {
-    return $this->userName;
+  // Get's firstName    
+  function get_firstName() {
+    return $this->firstName;
+  }
+    
+  // Set's lastName
+  function set_lastName($lastName) {
+    $this->lastName = $lastName;
+  }
+    
+  // Get's lastName    
+  function get_lastName() {
+    return $this->lastName;
+  }    
+  
+    
+  // Set's userEmail
+  function set_userEmail($userEmail) {
+    $this->userEmail = $userEmail;
+  }
+    
+  // Get's userEmail    
+  function get_userEmail() {
+    return $this->userEmail;
+  }
+    
+  // Set's userPassword    
+  function set_userPassword($userPassword) {
+    $this->userPassword = $userPassword;
+  }
+    
+  // Get's userPassword  
+  function get_userPassword() {
+    return $this->userPassword;
   }
   
-  // Set's password    
-  function set_password($password) {
-    $this->password = $password;
+  // Set's userNumber    
+  function set_userNumber($userNumber) {
+    $this->userNumber = $userNumber;
   }
     
-  // Get's password  
-  function get_password() {
-    return $this->password;
-  }
-    
-  // Set's userId    
-  function set_userId($userId) {
-    $this->userId = $userId;
-  }
-    
-  // Get's userId  
-  function get_userId() {
-    return $this->userId;
+  // Get's userNumber  
+  function get_userNumber() {
+    return $this->userNumber;
   }    
+  
     
     
     
 /* Register User */    
-  public function registerUser($firstname, $lastname, $email, $phonenumber){
+  public function registerUser(){
       
+$password="Akuoma.96";
+$user = "root";
+$webserver="127.0.0.1";
+$db = "myAlertsApp";
       
-      $query = "INSERT INTO `Registered_User` (`UserId`, `FirstName`, `LastName`, `RegistartionDate`, `EmailAddress`, `PhoneNumber`) VALUES (NULL, '$firstname', '$lastname', CURRENT_TIMESTAMP, '$email', '$phonenumber')";
+
+
+$conn = new mysqli($webserver, $user, $password, $db);  
+
+
+      
+      $query = "INSERT INTO `Registered_User` (`UserId`, `FirstName`, `LastName`, `RegistartionDate`, `EmailAddress`, `Password`, `PhoneNumber`) VALUES (NULL, '$this->firstName', '$this->lastName', CURRENT_TIMESTAMP, '$this->userEmail', '$this->userPassword', '$this->userNumber')";
       
       //insert form data into MySQL database
       $result = $conn->query($query);
       
         if($result){
             
-            echo "<script>alert('Hi $firstname you have been successfully registered click 
-        <a href='index.html'>here</a> the login in with your email and password')</script>";
-            
+            echo "<script>alert('Registration Successful')</script>";  
+
         } else {
-            
-            header('Location: index.php');
             
             echo "<script>alert('Registration Not Successful')</script>";  
         } 
-      
          
   }     
     
-  
-  /* Retrieves user id of the current user */     
-  protected function validateUser(){    
-      
-      $query = "SELECT * FROM Registered_User WHERE EmailAddress = $this->userName AND Password = $this->password";
-      
-      $result = sqlsrv_query($conn,$query);
-      
-      $num = sqlsrv_num_rows($result);
-      
-      if($num==1){
-          
-          $this.loginUser();
-          } 
-      
-      else{
-          
-          return false;
-          
-          throw new Exception('Invalid Login Credentials');
-          }
-      
-          
-          mssql_free_result($result);
-
-          mssql_close($conn);      
-          }
-    
-}
 ?>

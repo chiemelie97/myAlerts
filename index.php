@@ -1,5 +1,6 @@
 <?php
    require("./user_class.php");
+
 ?>
 
 <!DOCTYPE html>
@@ -131,12 +132,13 @@
                 $lastname = $conn->real_escape_string($_POST['lname']);
                 $email = $conn->real_escape_string($_POST['email']);
                 $phonenumber = $conn->real_escape_string($_POST['phonenumber']);
+                $password = $conn->real_escape_string($_POST['password']);
             
             
             
-                $user = new User();
+                $user = new User($firstname, $lastname, $email, $password, $phonenumber);
                 
-                $user->registerUser($firstname, $lastname, $email, $phonenumber);
+                $user->registerUser();
             
             
             

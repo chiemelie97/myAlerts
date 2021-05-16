@@ -1,61 +1,46 @@
 <?php
 
-require('user_class.php');
+require("./user_class.php");
 
 class RegisteredUser extends User {
  
-  // Properties   
-  protected $firstName;
-  protected $lastName;
-  protected $email;
-  protected $countryCode; 
-  protected $phoneNmuber;
+  // Properties  
+    
+  //User's ID will be stored in this variable using a Session variable    
+  //public $userId = 0;     
+  
+  //protected $countryCode; 
     
   //constructor
-  function __construct($userName, $password, $firstName, $lastName, $email, $countryCode, $phoneNumber) {
-    parent::__construct();
+  function __construct($firstName, $lastName, $userEmail, $password, $userNumber, $countryCode) {
+    //parent::__construct();
      $this->firstName = $firstName;
-     $this->lastName = $lastName;  
-     $this->email = $email;
+    $this->lastName = $lastName;
+    $this->userEmail = $userEmail;
+    $this->userPassword = $userPassword;
+    $this->userNumber = $userNumber;
      $this->countryCode = $countryCode;
-     $this->phoneNumber = $phoneNumber;
+    
       
   }
     
   //deconstructor    
   function __destruct() {
     
+  } 
+    
+  /*    
+  // Set's userId    
+  function set_userId($userId) {
+    $this->userId = $userId;
+  }
+    
+  // Get's userId  
+  function get_userId() {
+    return $this->userId;
+    
   }        
-    
-  // Set's firstName
-  function set_firstName($firstName) {
-    $this->firstName = $firstName;
-  }
-    
-  // Get's firstName    
-  function get_firstName() {
-    return $this->firstName;
-  }
-  
-  // Set's lastName    
-  function set_lastName($lastName) {
-    $this->lastName = $lastName;
-  }
-    
-  // Get's lastName    
-  function get_lastName() {
-    return $this->lastName;
-  }  
-    
-  // Set's email
-  function set_email($email) {
-    $this->email = $email;
-  }
-    
-  // Get's email    
-  function get_email() {
-    return $this->email;
-  }
+      
   
   // Set's countryCode    
   function set_countryCode($countryCode) {
@@ -66,16 +51,8 @@ class RegisteredUser extends User {
   function get_countryCode() {
     return $this->countryCode;
   }  
-    
-  // Set's phoneNumber    
-  function set_phoneNumber($phoneNumber) {
-    $this->phoneNumber = $phoneNumber;
-  }
-    
-  // Get's phoneNumber    
-  function get_phoneNumber() {
-    return $this->phoneNumber;
-  }  
+
+*/
     
 
     
